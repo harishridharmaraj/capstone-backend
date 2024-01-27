@@ -47,7 +47,7 @@ app.post("/register", async (req, res) => {
     res.status(200).send("User Created");
     const activationmail = `Welcome to Doubt Guru<br/>
   
-      To activate your account, please <a href='http://localhost:4000/account/${activationToken}'>click here</a><br/>
+      To activate your account, please <a href='https://haribackend.onrender.com/account/${activationToken}'>click here</a><br/>
       
       If you did not make this request and are concerned about the security of your account, Kindly ignore this mail.
       <br/>
@@ -76,7 +76,7 @@ app.get("/account/:verification", async (req, res) => {
       { account: true, $unset: { accounttoken: 1 } }
     );
     if (accverify) {
-      res.redirect("http://localhost:3000/login");
+      res.redirect("https://main--vermillion-taffy-ac49c7.netlify.app/login");
     } else {
       res.status(500).send("Error Verifying Account");
     }
@@ -100,7 +100,7 @@ app.put("/forgetpass", async (req, res) => {
     res.send("Password Token Updated");
     const resetmail = `We received your request to change your account password.<br/>
   
-    To reset your password please <a href='http://localhost:3000/request/${resetToken}'>click here</a><br/>
+    To reset your password please <a href='https://main--vermillion-taffy-ac49c7.netlify.app/request/${resetToken}'>click here</a><br/>
     
     If you did not make this request and are concerned about the security of your account, Kindly ignore this mail.
     <br/>
@@ -297,7 +297,7 @@ app.post("/creatementors", async (req, res) => {
 
       const activationmail = `Welcome to Doubt Guru Mentor Portal<br/>
   
-      To activate your Mentor account, please <a href='http://localhost:3000/mentors/${activationToken}'>click here</a><br/>
+      To activate your Mentor account, please <a href='https://main--vermillion-taffy-ac49c7.netlify.app/mentors/${activationToken}'>click here</a><br/>
       
       If you did not make this request and are concerned about the security of your account, Kindly ignore this mail.
       <br/>
