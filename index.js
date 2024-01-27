@@ -37,7 +37,7 @@ app.post("/register", async (req, res) => {
   try {
     const activationToken = randomstring.generate(32);
     const salt = await bcrypt.genSalt(10);
-    const hashedpassword = await bcrypt.hash(pass, salt);
+    const hashedpassword = await bcrypt.hash(pass, salt, null, function (err, hash) { ... })
 
     const users = await UserModel.create({
       ...req.body,
