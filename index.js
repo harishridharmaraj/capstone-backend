@@ -34,6 +34,8 @@ const transporter = nodemailer.createTransport({
 // ---Register the user and send mail
 app.post("/register", async (req, res) => {
   const { email, pass } = req.body;
+  const user = await UserModel.findOne({ email: email });
+  if (!user) {
   try {
     const activationToken = randomstring.generate(32);
     const salt = await bcrypt.genSalt(10);
@@ -64,6 +66,9 @@ app.post("/register", async (req, res) => {
   } catch (error) {
     console.log(error);
     res.send(error);
+  }}else{
+    console.log("User already registered");
+    res.status(202).send("User already Registered");
   }
 });
 // User Mail and Account verfication
